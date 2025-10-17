@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO or NO</title>
+    <style>
+        #movingButton {
+            position: absolute; /* Crucial for controlling position with top/left */
+            padding: 10px 20px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #yesButton {
+            position: absolute; /* Crucial for controlling position with top/left */
+            padding: 10px 20px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 150px;
+        }
+        #myDIV{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background-color: white;
+            align-content: center;
+        }
+        img{
+            width: 100%;
+            margin-top: -10em;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Do you want to proceed?</h1>
+        <div style="position: relative; height: 200px;display: inline-flex; align-items: center; justify-content: center;margin-left: 165px;">
+            <button id="movingButton">NO</button>
+            <button onclick="myFunction()" id="yesButton">YES</button>
+        </div>
+    </div>
+
+<div id="myDIV" style="display:none;">
+    <img src="pop.gif">
+</div>
+
+    <script>
+        const button = document.getElementById('movingButton');
+
+        button.addEventListener('click', () => {
+            // Get the dimensions of the window and the button
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            // Generate random top and left positions within the window bounds
+            const randomTop = Math.floor(Math.random() * (windowHeight - buttonHeight));
+            const randomLeft = Math.floor(Math.random() * (windowWidth - buttonWidth));
+
+            // Apply the new positions
+            button.style.top = `${randomTop}px`;
+            button.style.left = `${randomLeft}px`;
+        });
+
+        
+        function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+        }
+
+
+
+    </script>
+</body>
+</html>
